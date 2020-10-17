@@ -1,0 +1,2 @@
+com/andermirik/authentification/AuthentificationApplicationTests.java
+ com.andermirik.authentification.AuthentificationApplicationTests
