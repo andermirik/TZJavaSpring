@@ -1,5 +1,6 @@
 package com.andermirik.userpanel.controller;
 
+import com.andermirik.userpanel.config.jwt.JwtFilter;
 import com.andermirik.userpanel.config.jwt.JwtProvider;
 import com.andermirik.userpanel.model.UserModel;
 import com.andermirik.userpanel.service.UserService;
@@ -7,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +21,7 @@ public class UserController {
     @Autowired
     private JwtProvider jwtProvider;
 
-    @GetMapping("/user/get_one")
+    @GetMapping("/user-panel-service/user/get_one")
     public String getOne(@RequestParam("username") String login) throws JSONException {
         UserModel user = userService.findByLogin(login);
         JSONObject j = new JSONObject();
@@ -37,7 +39,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user/get_all")
+    @GetMapping("/user-panel-service/user/get_all")
     public String getAll() throws JSONException {
         List<UserModel> users =  userService.findAll();
         JSONObject j = new JSONObject();
@@ -54,19 +56,19 @@ public class UserController {
         return j.toString();
     }
 
-    @GetMapping("/admin/get_all_by_role")
+    @GetMapping("/user-panel-service/admin/get_all_by_role")
     public List<UserModel> getUserByRole(@RequestParam("role") String role){
         List<UserModel> users = userService.findByRoleName(role);
         return users;
     }
 
-    @GetMapping("/admin/get_by_id")
+    @GetMapping("/user-panel-service/admin/get_by_id")
     public UserModel getUser(@RequestParam("id") Long id){
         UserModel user = userService.findById(id);
         return user;
     }
 
-    @GetMapping("/admin/register_user")
+    @GetMapping("/user-panel-service/admin/register_user")
     public String getRegister(@RequestParam("login") String login, @RequestParam("password") String password){
         UserModel user = new UserModel();
         user.setPassword(password);
@@ -74,6 +76,4 @@ public class UserController {
         userService.saveUser(user);
         return "OK";
     }
-
-
 }

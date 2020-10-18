@@ -1,11 +1,3 @@
-com/andermirik/authentification/config/jwt/JwtFilter.java
- com.andermirik.authentification.config.jwt.JwtFilter
-com/andermirik/authentification/repository/RoleRepository.java
- com.andermirik.authentification.repository.RoleRepository
-com/andermirik/authentification/AuthentificationApplication.java
- com.andermirik.authentification.AuthentificationApplication
-com/andermirik/authentification/config/jwt/JwtProvider.java
- com.andermirik.authentification.config.jwt.JwtProvider
 com/andermirik/authentification/service/UserService.java
  com.andermirik.authentification.service.UserService
 com/andermirik/authentification/model/UserModel.java
@@ -14,11 +6,19 @@ com/andermirik/authentification/config/CustomUserDetailsService.java
  com.andermirik.authentification.config.CustomUserDetailsService
 com/andermirik/authentification/repository/UserRepository.java
  com.andermirik.authentification.repository.UserRepository
+com/andermirik/authentification/AuthentificationApplication.java
+ com.andermirik.authentification.AuthentificationApplication
+com/andermirik/authentification/config/jwt/JwtProvider.java
+ com.andermirik.authentification.config.jwt.JwtProvider
 com/andermirik/authentification/config/CustomUserDetails.java
  com.andermirik.authentification.config.CustomUserDetails
-com/andermirik/authentification/controller/AuthController.java
- com.andermirik.authentification.controller.AuthController
+com/andermirik/authentification/config/jwt/JwtFilter.java
+ com.andermirik.authentification.config.jwt.JwtFilter
 com/andermirik/authentification/model/RoleModel.java
  com.andermirik.authentification.model.RoleModel
+com/andermirik/authentification/repository/RoleRepository.java
+ com.andermirik.authentification.repository.RoleRepository
 com/andermirik/authentification/config/SecurityConfig.java
  com.andermirik.authentification.config.SecurityConfig
+com/andermirik/authentification/controller/AuthController.java
+ com.andermirik.authentification.controller.AuthController

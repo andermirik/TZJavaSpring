@@ -27,10 +27,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
-            .antMatchers("/admin/*").hasRole("ADMIN")
-            .antMatchers("/user/*").hasRole("USER")
-            .antMatchers("/user/*").hasRole("ADMIN")
-            .antMatchers("/register", "/auth").permitAll()
+            .antMatchers("/user-panel-service/admin/*").hasRole("ADMIN")
+            .antMatchers("/user-panel-service/user/*").hasRole("USER")
+            .antMatchers("/user-panel-service/user/*").hasRole("ADMIN")
+            .antMatchers("/").permitAll()
             .and()
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }

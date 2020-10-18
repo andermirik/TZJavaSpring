@@ -14,29 +14,9 @@ public class AuthController {
     @Autowired
     private JwtProvider jwtProvider;
 
-    @GetMapping("/auth")
+    @GetMapping("/auth-service/auth")
     public String get_auth(@RequestParam("login") String login, @RequestParam("password") String password){
         UserModel user = userService.findByLoginAndPassword(login, password);
         return jwtProvider.generateToken(user.getLogin());
     }
-
-//    @GetMapping("/register")
-//    public String get_register(@RequestParam("login") String login, @RequestParam("password") String password){
-//        UserModel user = new UserModel();
-//        user.setPassword(password);
-//        user.setLogin(login);
-//        userService.saveUser(user);
-//        return "OK";
-//    }
-
-//    @GetMapping("/admin/get")
-//    public String getAdmin() {
-//        return "Hi admin";
-//    }
-//
-//    @GetMapping("/user/get")
-//    public String getUser() {
-//        return "Hi user";
-//    }
-
 }

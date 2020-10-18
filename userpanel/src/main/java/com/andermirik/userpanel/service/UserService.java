@@ -13,6 +13,8 @@ import java.util.List;
 @Service
 public class UserService {
 
+    public static String currentUsername;
+
     @Autowired
     private UserRepository userRepository;
     @Autowired

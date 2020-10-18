@@ -2,6 +2,7 @@ package com.andermirik.userpanel.config.jwt;
 
 import com.andermirik.userpanel.config.CustomUserDetails;
 import com.andermirik.userpanel.config.CustomUserDetailsService;
+import com.andermirik.userpanel.service.UserService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -33,9 +34,11 @@ public class JwtFilter extends GenericFilterBean {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         logger.info("do filter...");
+        UserService.currentUsername = null;
         String token = getTokenFromRequest((HttpServletRequest) servletRequest);
         if (token != null && jwtProvider.validateToken(token)) {
             String userLogin = jwtProvider.getLoginFromToken(token);
+            UserService.currentUsername = userLogin;
             CustomUserDetails customUserDetails = customUserDetailsService.loadUserByUsername(userLogin);
             UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(auth);

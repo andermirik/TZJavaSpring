@@ -2,8 +2,8 @@ com/andermirik/userpanel/repository/RoleRepository.java
  com.andermirik.userpanel.repository.RoleRepository
 com/andermirik/userpanel/config/jwt/JwtProvider.java
  com.andermirik.userpanel.config.jwt.JwtProvider
-com/andermirik/userpanel/config/SecurityConfig.java
- com.andermirik.userpanel.config.SecurityConfig
+com/andermirik/userpanel/service/UserService.java
+ com.andermirik.userpanel.service.UserService
 com/andermirik/userpanel/config/jwt/JwtFilter.java
  com.andermirik.userpanel.config.jwt.JwtFilter
 com/andermirik/userpanel/UserPanel.java
@@ -12,13 +12,13 @@ com/andermirik/userpanel/config/CustomUserDetails.java
  com.andermirik.userpanel.config.CustomUserDetails
 com/andermirik/userpanel/model/RoleModel.java
  com.andermirik.userpanel.model.RoleModel
-com/andermirik/userpanel/model/UserModel.java
- com.andermirik.userpanel.model.UserModel
-com/andermirik/userpanel/service/UserService.java
- com.andermirik.userpanel.service.UserService
 com/andermirik/userpanel/config/CustomUserDetailsService.java
  com.andermirik.userpanel.config.CustomUserDetailsService
+com/andermirik/userpanel/config/SecurityConfig.java
+ com.andermirik.userpanel.config.SecurityConfig
 com/andermirik/userpanel/controller/UserController.java
  com.andermirik.userpanel.controller.UserController
+com/andermirik/userpanel/model/UserModel.java
+ com.andermirik.userpanel.model.UserModel
 com/andermirik/userpanel/repository/UserRepository.java
  com.andermirik.userpanel.repository.UserRepository
