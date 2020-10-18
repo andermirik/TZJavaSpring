@@ -1,0 +1,2 @@
+com/andermirik/eurekaservice/EurekaServiceApplication.java
+ com.andermirik.eurekaservice.EurekaServiceApplication
