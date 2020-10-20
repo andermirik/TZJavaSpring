@@ -1,2 +1,2 @@
-com/andermirik/authentification/AuthentificationApplicationTests.java
- com.andermirik.authentification.AuthentificationApplicationTests
+com/andermirik/userpanel/UserPanelTests.java
+ com.andermirik.userpanel.UserPanelTests

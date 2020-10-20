@@ -19,7 +19,7 @@ public class RoleModel  implements Serializable {
 
     }
 
-    RoleModel(String name){
+    public RoleModel(String name){
         this.name = name;
     }
 
