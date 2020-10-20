@@ -1,2 +1,0 @@
-com/andermirik/zuulservice/ZuulServiceApplication.java
- com.andermirik.zuulservice.ZuulServiceApplication
