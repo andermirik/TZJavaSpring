@@ -1,0 +1,2 @@
+com/andermirik/eurekaservice/EurekaServiceApplicationTests.java
+ com.andermirik.eurekaservice.EurekaServiceApplicationTests

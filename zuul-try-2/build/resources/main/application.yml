@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: zuul-server
+#eureka:
+#  instance:
+#    preferIpAddress: true
+#  client:
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    serviceUrl:
+#      defaultZone: {EUREKA_URI:http://localhost:8761/eureka}
+
+eureka:
+  client:
+    serviceUrl:
+      registerWithEureka: true
+      fetchRegistry: true
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}/eureka
+  instance:
+    preferIpAddress: true
+
+server:
+  port: {PORT:8762}
+
+zuul:
+  routes:
+    auth-service:
+      path: /auth/**
+      serviceId: auth-service
+      stripPrefix: false
+    user:
+      path: /user/**
+      serviceId: user-panel-service
+      stripPrefix: false
+    admin:
+      path: /admin/**
+      serviceId: user-panel-service
+      stripPrefix: false
+    core:
+      path: /**
+      serviceId: user-panel-service
+      stripPrefix: false
