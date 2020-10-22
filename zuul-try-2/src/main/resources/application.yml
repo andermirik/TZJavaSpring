@@ -20,15 +20,18 @@ zuul:
       path: /auth/**
       serviceId: auth-service
       stripPrefix: false
+      sensitiveHeaders:
     user:
       path: /user/**
       serviceId: user-panel-service
       stripPrefix: false
+      sensitiveHeaders:
     admin:
       path: /admin/**
       serviceId: user-panel-service
       stripPrefix: false
-    core:
-      path: /**
-      serviceId: user-panel-service
-      stripPrefix: false
+      sensitiveHeaders:
+    #core:
+    #  path: /**
+    #  serviceId: user-panel-service
+    #  stripPrefix: false

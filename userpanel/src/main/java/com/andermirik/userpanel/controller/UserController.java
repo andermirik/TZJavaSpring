@@ -70,10 +70,14 @@ public class UserController {
 
     @GetMapping("/admin/register_user")
     public String getRegister(@RequestParam("login") String login, @RequestParam("password") String password){
-        UserModel user = new UserModel();
-        user.setPassword(password);
-        user.setLogin(login);
-        userService.saveUser(user);
+        if(login!="") {
+            UserModel user = new UserModel();
+            user.setPassword(password);
+            user.setLogin(login);
+            userService.saveUser(user);
+        }
+        else
+            return "Login is empty";
         return "OK";
     }
 }

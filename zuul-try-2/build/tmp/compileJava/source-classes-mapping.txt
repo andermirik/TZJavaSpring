@@ -1,2 +1,4 @@
+com/andermirik/zuultry2/controller/IndexController.java
+ com.andermirik.zuultry2.controller.IndexController
 com/andermirik/zuultry2/ZuulTry2Application.java
  com.andermirik.zuultry2.ZuulTry2Application

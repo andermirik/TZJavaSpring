@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>тест</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    Login:<br>
+    <input type="text" name="username" id="username" placeholder="login" content="admin"/><br>
+    Password:<br>
+    <input type="password" name="password" id="password" placeholder="password" content="admin"/><br><br>
+    <input type="button" onclick="on_auth_click()" value="Make authorization"/>
+    <hr>
+    User:<hr>
+    <input type="text" name="login_get_one" id="login_get_one" placeholder="login" content="admin"/>
+    <input type="button" onclick="get_one()" value="Get One"/>
+    <input type="button" onclick="get_all()" value="Get All"/><hr>
+    <br> <br> <br>
+    Admin:
+    <hr>
+    <input type="button" name="sub" onclick="get_all_by_role_click('ROLE_ADMIN')" value="Get All Admins"/><br><br>
+    <input type="button" name="sub" onclick="get_all_by_role_click('ROLE_USER')" value="Get All Users"/><br>
+    <hr>
+    <input type="text" name="user_id" id="user_id" placeholder="user id" content="0"/>
+    <input type="button" name="sub" onclick="get_by_id()" value="Get by id"/><br>
+    <hr>
+    Login:<br>
+    <input type="text" id="reg_username" placeholder="login" content="admin"/><br>
+    Password:<br>
+    <input type="password" id="reg_password" placeholder="password" content="admin"/><br><br>
+    <input type="button"  onclick="register_user()" value="Register user"/><br>
+    <br> <br> <br> <br> <br>
+    <hr>
+    <h3>Last result:</h3>
+    <p id="last_result"></p>
+    <hr>
+    <script>
+        var jwtoken;
+
+        function on_auth_click(){
+            var username = $("input#username").val();
+            var password = $("input#password").val();
+
+            $.ajax({
+              type: "GET",
+              url: "/auth?login="+username+"&password="+password,
+              success: function(response){
+                console.log(response);
+                jwtoken = response;
+                $("#last_result").html(response);
+              }
+            });
+        }
+        function get_one(){
+            var login_get_one = $("input#login_get_one").val();
+            $.ajax({
+              type: "GET",
+              url: "/user/get_one?username="+login_get_one,
+              beforeSend: function (xhr){
+                xhr.setRequestHeader('Authorization', 'Bearer ' + jwtoken);
+              },
+              error: function(xhr, status, error){
+                 var errorMessage = xhr.status + ': ' + xhr.statusText
+                 $("#last_result").html('Error - ' + errorMessage);
+              },
+              success: function(response){
+                console.log(response);
+                $("#last_result").html(response);
+              }
+            });
+        }
+        function get_all(){
+            $.ajax({
+              type: "GET",
+              url: "/user/get_all",
+              beforeSend: function (xhr){
+                xhr.setRequestHeader('Authorization', 'Bearer ' + jwtoken);
+              },
+              error: function(xhr, status, error){
+                 var errorMessage = xhr.status + ': ' + xhr.statusText
+                 $("#last_result").html('Error - ' + errorMessage);
+              },
+              success: function(response){
+                console.log(response);
+                $("#last_result").html(response);
+              }
+            });
+        }
+        function get_all_by_role_click(role){
+            $.ajax({
+              type: "GET",
+              url: "/admin/get_all_by_role?role="+role,
+              beforeSend: function(xhr){
+                xhr.setRequestHeader('Authorization', 'Bearer ' + jwtoken);
+              },
+              error: function(xhr, status, error){
+                 var errorMessage = xhr.status + ': ' + xhr.statusText
+                 $("#last_result").html('Error - ' + errorMessage);
+              },
+              success: function(response){
+                console.log(response);
+                $("#last_result").html(JSON.stringify(response));
+              }
+            });
+        }
+        function get_by_id(){
+            var user_id = $("input#user_id").val();
+            $.ajax({
+              type: "GET",
+              url: "/admin/get_by_id?id="+user_id,
+              beforeSend: function (xhr){
+                xhr.setRequestHeader('Authorization', 'Bearer ' + jwtoken);
+              },
+              error: function(xhr, status, error){
+                 var errorMessage = xhr.status + ': ' + xhr.statusText
+                 $("#last_result").html('Error - ' + errorMessage);
+              },
+              success: function(response){
+                console.log(response);
+                $("#last_result").html(JSON.stringify(response));
+              }
+            });
+        }
+        function register_user(){
+            var reg_username = $("input#reg_username").val();
+            var reg_password = $("input#reg_password").val();
+            $.ajax({
+              type: "GET",
+              url: "/admin/register_user?login="+reg_username+"&password="+reg_password,
+              beforeSend: function (xhr){
+                xhr.setRequestHeader('Authorization', 'Bearer ' + jwtoken);
+              },
+              error: function(xhr, status, error){
+                 var errorMessage = xhr.status + ': ' + xhr.statusText
+                 $("#last_result").html('Error - ' + errorMessage);
+              },
+              success: function(response){
+                console.log(response);
+                $("#last_result").html(response);
+              }
+            });
+        }
+    </script>
+</body>
+</html>
